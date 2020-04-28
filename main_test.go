@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/stretchr/testify/require"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestPrefixes(t *testing.T) {
 	test := func(a string, b []string) {
-		require.Equal(t, a, prefixes(b), fmt.Sprintf("%#v", b))
+		assert.Equal(t, a, prefixes(b), fmt.Sprintf("%#v", b))
 	}
 
 	test("", []string{"", ""})

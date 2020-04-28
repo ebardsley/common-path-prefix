@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
+
+# gazelle:prefix github.com/ebardsley/common-path-prefix
+
+go_library(
+    name = "go_default_library",
+    srcs = ["main.go"],
+    importpath = "github.com/ebardsley/common-path-prefix",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "common-path-prefix",
+    embed = [":go_default_library"],
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = ["main_test.go"],
+    embed = [":go_default_library"],
+    deps = ["@com_github_stretchr_testify//assert:go_default_library"],
+)
